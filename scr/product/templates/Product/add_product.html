@@ -1,0 +1,20 @@
+
+{% extends 'base.html' %} 
+{% load static %}
+
+
+{% block body %}
+<div class= "m-5 py-5">
+  <h1> add product </h1>
+  <hr>
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form }}
+    <br>
+    <button type="submit">Submit</button> 
+  </form>
+</div>
+
+{% endblock body %}
+

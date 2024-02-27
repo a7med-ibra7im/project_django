@@ -1,0 +1,208 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Souq</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+    <!-- MDB -->
+    <link rel="stylesheet" href="{% static 'site_static/css/mdb.min.css' %}" />
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="{% static 'site_static/css/style.css' %}" />
+</head>
+<body>
+    <!-- Navbar -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+    <!-- Container wrapper -->
+    <div class="container">    
+      <!-- Toggle button -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-mdb-toggle="collapse"
+        data-mdb-target="#navbarSupportedContent1"
+        aria-controls="navbarSupportedContent1"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Collapsible wrapper -->
+      <div class="collapse navbar-collapse " id="navbarSupportedContent1" style ="margin-top: 10px;">      
+        <!-- Navbar brand -->
+        <a class="navbar-brand mt-2 mt-sm-0" href="/">
+          <p class="bg-Info text-info ">SOUQ</p>
+        </a>
+        <!-- Left links -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link " href="https://mdbootstrap.com/">Category</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://mdbootstrap.com/docs/standard/">About MDB</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" href="https://mdbootstrap.com/education/bootstrap/">Free tutorials</a>
+          </li>
+        </ul>
+        <!-- Left links -->      
+      </div>
+      <!-- Collapsible wrapper -->
+      
+      <!-- Right elements -->
+      <div class="d-flex align-items-center ">
+        <!-- Icon -->
+        <a class="nav-link me-3 " href="#">
+          <i class="fas fa-shopping-cart"> <p>Cart</p> </i>
+          <span class="badge rounded-pill badge-notification bg-danger">1</span>
+        </a>
+
+        {% if user.is_authenticated %}
+        </a>
+        <a href="{% url 'products:add_product' %}" class="border-rounded px-2 nav-link" >
+          <i class="fas fa-user-plus"></i>Add Product
+        </a>
+
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user-plus"></i>Profile
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">My Profile</a>
+            <a class="dropdown-item" href="#">Edit Profile</a>
+            <a class="dropdown-item" href="#">Change Password</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">My Orders</a>
+            <a class="dropdown-item" href="#">Track My Orders</a>
+
+          </div>
+        </div>
+        {% else %}
+        <a href="{% url 'login' %}" class="border-rounded px-2 nav-link" >
+          <i class="fas fa-user-plus"></i>Login
+        </a>
+        <a href="{% url 'accounts:signup' %}" class="border rounded px-2 nav-link" >
+          <i class="fas fa-sign-in-alt mr-2"></i>Singup </a>
+        </a>
+        {% endif %}
+
+      </div>
+      <!-- Right elements -->
+      </div>
+  <!-- Container wrapper -->
+  </nav>
+  <!-- Navbar -->
+
+
+
+<!--Main layout-->
+<div class="my-5 p-2">
+  {% block body %}
+
+  {% endblock body %}
+</div>
+<!--Main layout-->
+
+<footer class="text-center text-white mt-4" style="background-color: #607D8B">
+  
+  <!--Call to action-->
+    <div class="pt-4 pb-2">
+      <a class="btn btn-outline-white footer-cta mx-2" href="{% url 'login' %}" role="button">
+        <i class="fas fa-download ms-2">Login</i>
+      </a>
+      <a class="btn btn-outline-white footer-cta mx-2" href="{% url 'accounts:signup' %}"  role="button">
+        <i class="fas fa-graduation-cap ms-2">Singup</i>
+      </a>
+    </div>
+    <!--/.Call to action-->
+  
+  <hr class="text-dark">
+  
+  <div class="container">
+    <!-- Section: Social media -->
+    <section class="mb-3">
+      
+      <!-- Facebook -->
+      <a
+        class="btn-link btn-floating btn-lg text-white"
+        href="#!"
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fab fa-facebook-f"></i
+      ></a>
+
+      <!-- Twitter -->
+      <a
+        class="btn-link btn-floating btn-lg text-white"
+        href="#!"
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fab fa-twitter"></i
+      ></a>
+
+      <!-- Google -->
+      <a
+        class="btn-link btn-floating btn-lg text-white"
+        href="#!"
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fab fa-google"></i
+      ></a>
+
+      <!-- Instagram -->
+      <a
+        class="btn-link btn-floating btn-lg text-white"
+        href="#!"
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fab fa-instagram"></i
+      ></a>
+
+      <!-- YouTube -->
+      <a
+        class="btn-link btn-floating btn-lg text-white"
+        href="#!"
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fab fa-youtube"></i
+      ></a>
+      <!-- Github -->
+      <a
+        class="btn-link btn-floating btn-lg text-white"
+        href="#!"
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fab fa-github"></i
+      ></a>
+    </section>
+    <!-- Section: Social media -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); text-color: #E0E0E0">
+    © 2022 Copyright:
+    <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+    <!-- MDB -->
+    <script type="text/javascript" src="{% static 'site_static/js/mdb.min.js' %}"></script>
+    <!-- Custom scripts -->
+    <script type="text/javascript" src="{% static 'site_static/js/script.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
